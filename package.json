@@ -1,0 +1,24 @@
+{
+    "name": "finesse-2.0",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "ts-node src/app.ts",
+        "build": "tsc",
+        "serve": "node dist/app.js"
+    },
+    "keywords": [],
+    "author": "Sush1sui",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^14.15.3",
+        "dotenv": "^16.4.5"
+    },
+    "devDependencies": {
+        "@types/node": "^22.5.0",
+        "@types/ws": "^8.5.12",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.5.4"
+    }
+}
