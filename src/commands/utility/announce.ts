@@ -101,7 +101,7 @@ export default {
                 allowedMentions: { parse: ["roles", "users"] },
             });
             await interaction.editReply({
-                content: `Announcement sent to ${channel}!`,
+                content: `**Announcement sent to ${channel}**`,
             });
         } catch (error) {
             // Type assertion to Error
