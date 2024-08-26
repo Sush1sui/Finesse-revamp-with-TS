@@ -7,7 +7,7 @@ import { CustomClient } from "./model/CustomClient";
 // make new Client instance
 // "cast" it to CustomClient
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds],
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 }) as CustomClient;
 
 // BOOM just like in discord.js docs
@@ -49,6 +49,7 @@ for (const file of eventFiles) {
             event.default.execute(...args)
         );
     } else {
+        console.log(event.default);
         client.on(event.default.name, (...args) =>
             event.default.execute(...args)
         );
