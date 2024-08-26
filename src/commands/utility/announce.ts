@@ -17,7 +17,7 @@ AUTHORIZED_ROLE_IDs.split(",");
 export default {
     data: new SlashCommandBuilder()
         .setName("announce")
-        .setDescription("(TEST) Make an announcement with an embedded message")
+        .setDescription("Make an announcement with an embedded message")
         .addChannelOption((option) =>
             option
                 .setName("channel")
