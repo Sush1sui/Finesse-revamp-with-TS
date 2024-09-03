@@ -27,7 +27,7 @@ export default {
                 } finally {
                     timeoutMap.delete(userId);
                 }
-            }, 2000);
+            }, 40000);
 
             // Store the timeout ID for the user
             timeoutMap.set(userId, timeoutId);
