@@ -8,7 +8,12 @@ export function startBot() {
     // make new Client instance
     // "cast" it to CustomClient
     const client = new Client({
-        intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+        intents: [
+            GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMembers,
+            GatewayIntentBits.GuildMessages,
+            GatewayIntentBits.MessageContent,
+        ],
     }) as CustomClient;
 
     // BOOM just like in discord.js docs
