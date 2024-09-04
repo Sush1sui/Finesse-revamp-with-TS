@@ -26,15 +26,14 @@ export default {
             const duration = getKakClaimTimer();
             let remainingTime = duration / 1000;
 
-            // Send the initial message and then edit it with the countdown
+            // Send the initial message with the countdown
             const replyMessage = await message.reply(
                 `**You can kak/trash claim now <@${userId}> in ${remainingTime} seconds!**`
             );
-
             // Update the message every second with the remaining time
             const intervalId = setInterval(async () => {
                 remainingTime--;
-                if (remainingTime > 0) {
+                if (remainingTime >= 0) {
                     try {
                         await replyMessage.edit(
                             `**You can kak/trash claim now <@${userId}> in ${remainingTime} seconds!**`
@@ -50,8 +49,10 @@ export default {
 
             // Set a timeout to send the final message when the countdown ends
             const timeoutId = setTimeout(async () => {
+                clearInterval(intervalId); // Clear the interval once the countdown is over
                 try {
-                    await replyMessage.edit(
+                    await replyMessage.delete();
+                    await message.reply(
                         `**You can kak/trash claim now <@${userId}>!**`
                     );
                 } catch (error) {
