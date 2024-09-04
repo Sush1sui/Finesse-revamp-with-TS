@@ -4,6 +4,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { CustomClient } from "./model/CustomClient";
 
+let timer = 40000;
+
+export function getKakClaimTimer() {
+    return timer;
+}
+
+export function changeKakClaimTimer(val: number) {
+    timer = val * 1000;
+}
+
 export function startBot() {
     // make new Client instance
     // "cast" it to CustomClient
