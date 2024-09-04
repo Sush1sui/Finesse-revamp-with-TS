@@ -1,4 +1,9 @@
-import { Client, Collection, GatewayIntentBits } from "discord.js";
+import {
+    ActivityType,
+    Client,
+    Collection,
+    GatewayIntentBits,
+} from "discord.js";
 import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
@@ -70,6 +75,17 @@ export function startBot() {
             );
         }
     }
+
+    // Set bot's status to 'online' and activity to 'Playing a game'
+    client.user?.setPresence({
+        status: "online", // online, idle, dnd, invisible
+        activities: [
+            {
+                name: "Do it with Finesse!", // The activity message
+                type: ActivityType.Playing, // The activity type (Playing, Streaming, Listening, Watching)
+            },
+        ],
+    });
 
     client.login(process.env.bot_token);
 }
