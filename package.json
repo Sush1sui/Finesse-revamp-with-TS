@@ -1,11 +1,10 @@
 {
     "name": "finesse-2.0",
     "version": "1.0.0",
-    "type": "module",
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node --loader ts-node/esm src/index.ts",
+        "start": "ts-node src/index.ts",
         "build": "tsc",
         "serve": "node dist/index.js"
     },
@@ -13,7 +12,6 @@
     "author": "Sush1sui",
     "license": "ISC",
     "dependencies": {
-        "abort-controller": "^3.0.0",
         "discord.js": "^14.15.3",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
