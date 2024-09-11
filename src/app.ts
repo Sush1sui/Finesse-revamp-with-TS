@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { CustomClient } from "./model/CustomClient";
 
-let timer = 40000;
+let timer = 15000;
 
 export function getKakClaimTimer() {
     return timer;
