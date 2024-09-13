@@ -7,10 +7,8 @@ const PORT = process.env.PORT || 6969;
 
 const BOT = process.env.BOT;
 let timeoutId: NodeJS.Timeout;
-let intervalId: NodeJS.Timeout;
 
 function pingBot() {
-    clearInterval(intervalId);
     if (!BOT) return; // Prevent overlap if already pinging
 
     const attemptPing = () => {
@@ -32,7 +30,7 @@ function pingBot() {
 export function startServer() {
     app.get("/", (_req, res) => res.send("Bot is running"));
 
-    intervalId = setInterval(pingBot, 600000); // Ping every 10 minutes
+    setInterval(pingBot, 600000); // Ping every 10 minutes
 
     app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
