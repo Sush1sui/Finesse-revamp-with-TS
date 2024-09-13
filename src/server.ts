@@ -1,23 +1,32 @@
 import express from "express";
 import "dotenv/config";
-import fetch from "node-fetch"; // Ensure this is installed and imported
+import fetch from "node-fetch";
 
 const app = express();
 const PORT = process.env.PORT || 6969;
 
+const BOT = process.env.BOT;
+let isPinging = false; // Track if a ping sequence is running
+
 function pingBot() {
-    if (process.env.BOT) {
-        fetch(process.env.BOT, { timeout: 5000 }) // Set a timeout of 5 seconds
+    if (!BOT || isPinging) return; // Prevent overlap if already pinging
+    isPinging = true;
+
+    const attemptPing = () => {
+        isPinging = true;
+        fetch(BOT)
             .then((res) => res.text())
-            .then((text) => console.log("Ping successful:", text))
+            .then((text) => {
+                console.log("Ping successful:", text);
+                isPinging = false; // Reset the flag on success
+            })
             .catch((err) => {
-                if (err.name === "AbortError") {
-                    console.error("Ping failed: Timeout");
-                } else {
-                    console.error("Ping failed:", err);
-                }
+                console.error("Ping failed, retrying:", err);
+                setTimeout(attemptPing, 5000); // Retry after 5 seconds
             });
-    }
+    };
+
+    attemptPing(); // Start the initial ping
 }
 
 export function startServer() {
